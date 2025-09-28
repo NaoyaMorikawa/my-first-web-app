@@ -53,29 +53,43 @@ body {
   左パネル（画像、名前、情報）
 ======================================================*/
 .left-panel {
-    text-align: center;
-    padding-top: 60px; /* ヘッダーの高さ分の余白を確保 */
-}   
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column; /* 縦並びを維持 */
+    align-items: center; /* 中央に寄せる */
+}
 
 .image-area {
-    /* ★調整済み: 画像をヘッダーに重ねるためのネガティブマージンを適用 */
+    /* ★修正点: 丸型アイコンのための設定を追加 */
     margin-top: -60px; 
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 50%; /* ★画像を丸く切り抜く */
+    
+    /* アイコンのサイズを固定（例：幅200px、高さ200px） */
+    width: 200px;
+    height: 200px;
+    
+    /* 影を追加してアイコン感を強調 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    
     margin-bottom: 25px;
 }
 
 .main-photo {
+    /* 丸い枠の中で画像が中央・全体を覆うようにする */
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
-.name-jp {
-    font-size: 2.8em;
-    font-weight: 700;
-    margin: 0 0 5px;
-    color: #222;
+/* ★画像以外（名前、大学情報）を左寄せに戻す（元デザイン準拠）*/
+.name-jp,
+.name-ruby,
+.info-section {
+    /* left-panel が align-items: center; なので、これらの幅を100%に戻す */
+    width: 100%; 
+    text-align: left; /* テキストを左寄せに戻す */
 }
 
 .name-ruby {
@@ -153,13 +167,13 @@ body {
     gap: 5px;
     flex-shrink: 0;
     width: 80%;
-    height: 500px;
+    height: 400px;
     overflow: hidden;
 }
 
 .hobby-img {
     width: 100%;
-    height: 100%;
+    height: 80%;
     object-fit: cover;
     border-radius: 4px;
 }
