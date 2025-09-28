@@ -1,0 +1,153 @@
+/* Google Fontsの読み込み（よりモダンなフォントを使用） */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap');
+
+/* 基本設定 */
+body {
+    font-family: 'Noto Sans JP', sans-serif; /* 日本語フォント */
+    line-height: 1.7; /* 行の高さを少し広げて読みやすく */
+    background-color: #f8f8f8; /* わずかにグレーがかった背景 */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 上部に寄せる */
+    min-height: 100vh; /* 画面の高さいっぱいにする */
+    padding: 40px 20px; /* 上下左右に余白 */
+    box-sizing: border-box; /* paddingがwidthに含まれるように */
+}
+
+/* コンテナ全体 */
+.container {
+    max-width: 720px; /* コンテンツ幅を少し広げる */
+    width: 100%;
+    background-color: #ffffff; /* 白い背景 */
+    padding: 50px 60px; /* 内側の余白を増やす */
+    border-radius: 12px; /* 角を丸くする */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 控えめな影 */
+    box-sizing: border-box;
+}
+
+/* メインタイトル (森川直哉) */
+h1 {
+    font-family: 'Playfair Display', serif; /* 英語のアクセントフォント */
+    font-size: 3.8em; /* さらに大きく */
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #222;
+    letter-spacing: -0.03em; /* 少し字間を詰める */
+}
+
+/* サブタイトル (大学名、趣味) */
+.tagline {
+    font-size: 1.15em;
+    color: #555;
+    margin-bottom: 50px; /* 下にさらに余白 */
+    line-height: 1.8;
+}
+
+/* 各セクション */
+.section {
+    margin-top: 45px; /* セクション間の余白 */
+    margin-bottom: 45px;
+}
+
+/* セクションタイトル (活動・学習、目標) */
+.section-title {
+    font-size: 0.9em;
+    color: #e74c3c; /* 鮮やかな赤 */
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.5px; /* 字間を少し広げる */
+    margin-top: 0;
+    margin-bottom: 18px; /* 下に少し余白 */
+    position: relative;
+}
+/* セクションタイトルの下に線を入れる */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 40px; /* 線の長さ */
+    height: 3px; /* 線の太さ */
+    background-color: #e74c3c;
+    margin-top: 8px; /* タイトルと線との間隔 */
+    border-radius: 2px;
+}
+
+/* 通常の段落 */
+p {
+    font-size: 1.05em; /* 少し大きく */
+    color: #444;
+}
+
+/* 強調したいテキスト (C言語) */
+.highlight-text {
+    font-weight: 600; /* 太く */
+    color: #e74c3c; /* セクションタイトルと同じ赤 */
+    background-color: rgba(231, 76, 60, 0.08); /* わずかに赤い背景色 */
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 最後のメッセージボックス */
+.learning-footer {
+    margin-top: 50px;
+    text-align: center; /* 中央寄せ */
+}
+
+.highlight-box {
+    display: inline-block;
+    background-color: #d8f5d8; /* 落ち着いた緑系の背景色 */
+    color: #27ae60; /* 緑系の文字色 */
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1.05em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* 影 */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* ホバーアニメーション */
+}
+
+.highlight-box:hover {
+    transform: translateY(-3px); /* 少し浮き上がる */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* スマートフォン向けの調整 */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+        align-items: flex-start; /* スマホでは上部に寄せる */
+    }
+
+    .container {
+        padding: 30px 25px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 2.8em;
+    }
+
+    .tagline {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+
+    .section {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 0.85em;
+    }
+
+    p {
+        font-size: 0.95em;
+    }
+
+    .highlight-box {
+        font-size: 0.95em;
+        padding: 12px 20px;
+    }
+}
