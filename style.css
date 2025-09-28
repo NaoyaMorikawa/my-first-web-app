@@ -1,153 +1,227 @@
-/* Google Fontsの読み込み（よりモダンなフォントを使用） */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap');
-
-/* 基本設定 */
+/*====================================================
+  基本設定とフォント
+======================================================*/
 body {
-    font-family: 'Noto Sans JP', sans-serif; /* 日本語フォント */
-    line-height: 1.7; /* 行の高さを少し広げて読みやすく */
-    background-color: #f8f8f8; /* わずかにグレーがかった背景 */
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.6;
     color: #333;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* 上部に寄せる */
-    min-height: 100vh; /* 画面の高さいっぱいにする */
-    padding: 40px 20px; /* 上下左右に余白 */
-    box-sizing: border-box; /* paddingがwidthに含まれるように */
+    background-color: #ffffff;
 }
 
-/* コンテナ全体 */
-.container {
-    max-width: 720px; /* コンテンツ幅を少し広げる */
+/*====================================================
+  ヘッダー（青い帯）
+======================================================*/
+.hero-header {
+    background-color: #1a4f8f; /* 画像の青っぽい色 */
+    padding: 20px 0;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 10px; /* 画像の上下バランスに合わせる */
+}
+
+/*====================================================
+  メインレイアウト（Flexbox & Grid）
+======================================================*/
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 60px; /* 下に余白 */
+}
+
+.profile-container {
+    display: grid;
+    /* 2カラムレイアウト (左35% / 右65% 程度の比率を想定) */
+    grid-template-columns: 350px 1fr; 
+    gap: 40px; /* 左右の間のスペース */
+    margin-top: -60px; /* 画像を青いヘッダーに重ねるためのネガティブマージン */
+}
+
+/*====================================================
+  左パネル（画像、名前、情報）
+======================================================*/
+.left-panel {
+    /* 画像を青いヘッダーの下に配置するために、このパネル自体にmargin-topは不要 */
+    padding-top: 60px; /* ヘッダーとの間隔 */
+}
+
+.image-area {
+    /* 画像の形を再現するため、枠を設ける */
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 25px;
+}
+
+.main-photo {
     width: 100%;
-    background-color: #ffffff; /* 白い背景 */
-    padding: 50px 60px; /* 内側の余白を増やす */
-    border-radius: 12px; /* 角を丸くする */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 控えめな影 */
+    height: auto;
+    display: block;
+}
+
+.name-jp {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin: 0 0 5px;
+    color: #222;
+}
+
+.name-ruby {
+    font-size: 1em;
+    color: #666;
+    margin: 0 0 30px;
+}
+
+/* 大学情報セクション */
+.info-section {
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+.info-item {
+    display: grid;
+    grid-template-columns: 100px 1fr; /* ラベルと値の幅を固定 */
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.info-label {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid #ccc; /* 枠線 */
+    color: #222;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 0.9em;
+    width: 100%;
     box-sizing: border-box;
 }
 
-/* メインタイトル (森川直哉) */
-h1 {
-    font-family: 'Playfair Display', serif; /* 英語のアクセントフォント */
-    font-size: 3.8em; /* さらに大きく */
+.info-value {
+    font-size: 1em;
+    padding-left: 20px;
+    font-weight: 500;
+}
+
+
+/*====================================================
+  右パネル（趣味、経歴）
+======================================================*/
+.section-heading {
+    font-size: 1.5em;
     font-weight: 700;
-    margin-bottom: 8px;
-    color: #222;
-    letter-spacing: -0.03em; /* 少し字間を詰める */
+    color: #1a4f8f; /* セクション見出しを青にする */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
 }
 
-/* サブタイトル (大学名、趣味) */
-.tagline {
-    font-size: 1.15em;
-    color: #555;
-    margin-bottom: 50px; /* 下にさらに余白 */
-    line-height: 1.8;
+/* 趣味セクションの特殊レイアウト（画像とリスト） */
+.hobby-content {
+    display: flex;
+    gap: 30px;
 }
 
-/* 各セクション */
-.section {
-    margin-top: 45px; /* セクション間の余白 */
-    margin-bottom: 45px;
-}
-
-/* セクションタイトル (活動・学習、目標) */
-.section-title {
-    font-size: 0.9em;
-    color: #e74c3c; /* 鮮やかな赤 */
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1.5px; /* 字間を少し広げる */
-    margin-top: 0;
-    margin-bottom: 18px; /* 下に少し余白 */
-    position: relative;
-}
-/* セクションタイトルの下に線を入れる */
-.section-title::after {
-    content: '';
-    display: block;
-    width: 40px; /* 線の長さ */
-    height: 3px; /* 線の太さ */
-    background-color: #e74c3c;
-    margin-top: 8px; /* タイトルと線との間隔 */
-    border-radius: 2px;
-}
-
-/* 通常の段落 */
-p {
-    font-size: 1.05em; /* 少し大きく */
+.hobby-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
     color: #444;
 }
 
-/* 強調したいテキスト (C言語) */
-.highlight-text {
-    font-weight: 600; /* 太く */
-    color: #e74c3c; /* セクションタイトルと同じ赤 */
-    background-color: rgba(231, 76, 60, 0.08); /* わずかに赤い背景色 */
-    padding: 2px 6px;
+.hobby-list li {
+    margin-bottom: 5px;
+}
+
+/* 趣味の画像エリア */
+.hobby-images {
+    /* 画像を右上に固定配置させるためのダミー。元の画像のレイアウトは複雑なのでFlexboxでシンプルに並べる */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    flex-shrink: 0; /* 縮まないように */
+    width: 50%;
+    height: 250px; /* 高さ固定 */
+    overflow: hidden; /* 画像を切り取る */
+}
+
+.hobby-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像がボックスに収まるように */
     border-radius: 4px;
 }
 
-/* 最後のメッセージボックス */
-.learning-footer {
-    margin-top: 50px;
-    text-align: center; /* 中央寄せ */
+/* 経歴セクション */
+.career-text {
+    font-size: 1em;
+    color: #444;
 }
 
-.highlight-box {
-    display: inline-block;
-    background-color: #d8f5d8; /* 落ち着いた緑系の背景色 */
-    color: #27ae60; /* 緑系の文字色 */
-    padding: 15px 25px;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 1.05em;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* 影 */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* ホバーアニメーション */
+.career-text br {
+    display: none; /* brタグはCSSで調整しやすいように非表示に */
+}
+.career-text p {
+    margin: 0;
+    padding-left: 10px;
+    text-indent: -10px; /* リスト風のインデント */
 }
 
-.highlight-box:hover {
-    transform: translateY(-3px); /* 少し浮き上がる */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+/* ロボコン詳細の箇条書き部分を整形 */
+.career-text > span {
+    display: block;
+    margin-bottom: 8px;
+    padding-left: 15px;
+    text-indent: -15px;
+}
+/* 画像のテキストを忠実に再現するため、- で始まる行を整形 */
+.career-text > span:before {
+    content: '- ';
+    display: inline;
 }
 
-/* スマートフォン向けの調整 */
-@media (max-width: 768px) {
-    body {
-        padding: 20px 15px;
-        align-items: flex-start; /* スマホでは上部に寄せる */
+/*====================================================
+  レスポンシブ対応
+======================================================*/
+@media (max-width: 992px) {
+    .profile-container {
+        /* スマホ/タブレットでは1カラムにする */
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 0; /* ネガティブマージンをリセット */
     }
 
-    .container {
-        padding: 30px 25px;
-        border-radius: 8px;
+    .left-panel {
+        padding-top: 30px; /* ヘッダーとの間隔 */
+    }
+    
+    .hobby-content {
+        flex-direction: column; /* 趣味の画像とリストを縦に並べる */
     }
 
-    h1 {
-        font-size: 2.8em;
+    .hobby-images {
+        width: 100%;
+        height: auto;
     }
 
-    .tagline {
-        font-size: 1em;
-        margin-bottom: 30px;
+    .header-content, .main-content {
+        padding: 0 20px;
     }
 
-    .section {
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-
-    .section-title {
-        font-size: 0.85em;
-    }
-
-    p {
-        font-size: 0.95em;
-    }
-
-    .highlight-box {
-        font-size: 0.95em;
-        padding: 12px 20px;
+    .name-jp {
+        font-size: 2.2em;
     }
 }
