@@ -29,7 +29,7 @@ body {
     font-weight: 700;
     color: #ffffff;
     margin: 0;
-    padding-top: 10px; /* 画像の上下バランスに合わせる */
+    padding-top: 10px;
 }
 
 /*====================================================
@@ -38,27 +38,28 @@ body {
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px 60px; /* 下に余白 */
+    padding: 0 40px 60px;
 }
 
 .profile-container {
     display: grid;
-    /* 2カラムレイアウト (左35% / 右65% 程度の比率を想定) */
+    /* 2カラムレイアウト */
     grid-template-columns: 350px 1fr; 
-    gap: 40px; /* 左右の間のスペース */
-    margin-top: -60px; /* 画像を青いヘッダーに重ねるためのネガティブマージン */
+    gap: 40px;
+    margin-top: 0; /* ネガティブマージンは画像に移動 */
 }
 
 /*====================================================
   左パネル（画像、名前、情報）
 ======================================================*/
 .left-panel {
-    /* 画像を青いヘッダーの下に配置するために、このパネル自体にmargin-topは不要 */
-    padding-top: 60px; /* ヘッダーとの間隔 */
-}
+    text-align: center;
+    padding-top: 60px; /* ヘッダーの高さ分の余白を確保 */
+}   
 
 .image-area {
-    /* 画像の形を再現するため、枠を設ける */
+    /* ★調整済み: 画像をヘッダーに重ねるためのネガティブマージンを適用 */
+    margin-top: -60px; 
     overflow: hidden;
     border-radius: 4px;
     margin-bottom: 25px;
@@ -91,7 +92,7 @@ body {
 
 .info-item {
     display: grid;
-    grid-template-columns: 100px 1fr; /* ラベルと値の幅を固定 */
+    grid-template-columns: 100px 1fr;
     align-items: center;
     margin-bottom: 15px;
 }
@@ -99,7 +100,7 @@ body {
 .info-label {
     display: inline-block;
     padding: 8px 15px;
-    border: 1px solid #ccc; /* 枠線 */
+    border: 1px solid #ccc;
     color: #222;
     font-weight: 700;
     text-align: center;
@@ -122,7 +123,7 @@ body {
 .section-heading {
     font-size: 1.5em;
     font-weight: 700;
-    color: #1a4f8f; /* セクション見出しを青にする */
+    color: #1a4f8f;
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 25px;
@@ -130,7 +131,6 @@ body {
 
 /* 趣味セクションの特殊レイアウト（画像とリスト） */
 .hobby-content {
-    display: flex;
     gap: 30px;
 }
 
@@ -148,20 +148,19 @@ body {
 
 /* 趣味の画像エリア */
 .hobby-images {
-    /* 画像を右上に固定配置させるためのダミー。元の画像のレイアウトは複雑なのでFlexboxでシンプルに並べる */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
-    flex-shrink: 0; /* 縮まないように */
-    width: 50%;
-    height: 250px; /* 高さ固定 */
-    overflow: hidden; /* 画像を切り取る */
+    flex-shrink: 0;
+    width: 80%;
+    height: 500px;
+    overflow: hidden;
 }
 
 .hobby-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 画像がボックスに収まるように */
+    object-fit: cover;
     border-radius: 4px;
 }
 
@@ -172,23 +171,18 @@ body {
 }
 
 .career-text br {
-    display: none; /* brタグはCSSで調整しやすいように非表示に */
-}
-.career-text p {
-    margin: 0;
-    padding-left: 10px;
-    text-indent: -10px; /* リスト風のインデント */
+    display: none; /* HTMLのbrタグを非表示にし、spanで制御 */
 }
 
 /* ロボコン詳細の箇条書き部分を整形 */
-.career-text > span {
+.career-text span {
     display: block;
     margin-bottom: 8px;
     padding-left: 15px;
     text-indent: -15px;
 }
-/* 画像のテキストを忠実に再現するため、- で始まる行を整形 */
-.career-text > span:before {
+/* - を再現 */
+.career-text span:before {
     content: '- ';
     display: inline;
 }
@@ -198,18 +192,17 @@ body {
 ======================================================*/
 @media (max-width: 992px) {
     .profile-container {
-        /* スマホ/タブレットでは1カラムにする */
         grid-template-columns: 1fr;
         gap: 30px;
-        margin-top: 0; /* ネガティブマージンをリセット */
+        margin-top: 0;
     }
 
-    .left-panel {
-        padding-top: 30px; /* ヘッダーとの間隔 */
+    .image-area {
+        margin-top: 0; /* スマホでは重ねない */
     }
     
     .hobby-content {
-        flex-direction: column; /* 趣味の画像とリストを縦に並べる */
+        flex-direction: column;
     }
 
     .hobby-images {
